@@ -16,3 +16,6 @@ export interface StyledButtonProps {
     index: number;
     value: number;
   }
+  export interface ReviewsListProps {
+    reviews: Review[];
+  }

@@ -5,7 +5,7 @@ const products: Product[] = [
   {
     id: 1,
     name: 'Polo with Contrast Trims',
-    image: "/assests/Images/BlackTshirt.png",
+    image: "/assests/Images/PrintedShirt.png",
     price: 212,
     originalPrice: 242,
     discount: '-20%',
@@ -16,14 +16,14 @@ const products: Product[] = [
     name: 'Gradient Graphic T-shirt',
     price: 145,
     rating: 3.5,
-    image: "/assests/Images/PinkT-Shirt.png"
+    image: "/assests/Images/BlueShirt.png"
   },
   {
     id: 3,
     name: 'Polo with Tipping Details',
     price: 180,
     rating: 4.5,
-    image: "/assests/Images/CheckT-shirt.png"
+    image: "/assests/Images/PinkT-Shirt.png"
 
   },
   {
@@ -33,7 +33,7 @@ const products: Product[] = [
     originalPrice: 150,
     discount: '-30%',
     rating: 5.0,
-    image: "/assests/Images/CheckT-shirt.png",
+    image: "/assests/Images/GreenShirt.png",
 
   },
   {
@@ -43,7 +43,7 @@ const products: Product[] = [
     originalPrice: 232,
     discount: "-20%",
     rating: 5.0,
-    image: "/assests/Images/CheckT-shirt.png",
+    image: "/assests/Images/OrangeBlackTshirt.png",
 
   },
   {
@@ -51,7 +51,7 @@ const products: Product[] = [
     name: "Courage Graphic T-shirt",
     price: 145,
     rating: 4.0,
-    image: "/assests/Images/CheckT-shirt.png",
+    image: "/assests/Images/OrangeTshirt.png",
 
   },
   {
@@ -59,7 +59,7 @@ const products: Product[] = [
     name: "Loose Fit Bermuda Shorts",
     price: 80,
     rating: 3.0,
-    image: "/assests/Images/CheckT-shirt.png",
+    image: "/assests/Images/DenimShorts.png",
 
   },
   {
@@ -67,7 +67,7 @@ const products: Product[] = [
     name: "Faded Skinny Jeans",
     price: 210,
     rating: 4.5,
-    image: "/assests/Images/CheckT-shirt.png",
+    image: "/assests/Images/Jeans.png",
 
   },
 
