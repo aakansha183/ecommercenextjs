@@ -10,16 +10,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormValues } from "../../Utils/Interfaces/LoginInterfaces";
 import { validationSchemaLogin } from "../../validationschema/LoginValidation";
 import { Translations } from "../../Utils/Translation/Translation";
-// import { useRegisterNavigate } from "../../Routes/Navigation";
 import { ErrorMessage, MainContainer, SubmitButton, Title } from "../../CommonComponents/LoginCommonComponent";
 import LoginTextField from "@/components/CommonTextInputField";
 import { useLoginHandler } from "@/components/LoginHandlers";
+import { useRouter } from "next/navigation";
+import { useSignupNavigate } from "@/routes/navigate";
 
 const Login: React.FC = () => {
-  // const { navigateToRegister } = useRegisterNavigate();
   const [error, setError] = useState<string>("");
   const { onSubmit } = useLoginHandler();
-
+const router =  useRouter();
   const {
     control,
     handleSubmit,
@@ -59,7 +59,8 @@ const Login: React.FC = () => {
             </Grid>
 
             <Grid size={{ xs: 12 }}>
-            <SubmitButton isSubmitting={isSubmitting} label={Translations.Login} />
+            <SubmitButton isSubmitting={isSubmitting} label={Translations.Login}
+             />
 
             </Grid>
           </Grid>
@@ -70,8 +71,9 @@ const Login: React.FC = () => {
         <Grid container justifyContent="center">
           <Grid size={{ xs: 'auto' }}>
             {Translations.LoginSubHead}{" "}
-            <Link component="button" variant="body2" >
+            <Link component="button" variant="body2" onClick={()=> useSignupNavigate() } >
               {Translations.Register}
+              
             </Link>
           </Grid>
         </Grid>

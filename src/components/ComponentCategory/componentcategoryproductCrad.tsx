@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -40,12 +39,9 @@ const ProductGrid: React.FC = () => {
   useEffect(() => {
       const fetchProducts = async () => {
           try {
-              const response = await axios.get('/api/products', {
-                  params: {
-                      per_page: 4
-                  }
-              });
+              const response = await axios.get('/api/products');
               setProducts(response.data);
+              console.log(response.data)
           } catch (error) {
               console.error("Error fetching products:", error);
           }

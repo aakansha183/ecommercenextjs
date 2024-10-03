@@ -15,7 +15,6 @@ import {
   viewAllButtonStyles,
   viewAllTranslationstyles,
 } from '../../Styles/StyleProductDetails/StyleSuggestedProducts';
-// import { useCategoryNavigate, useProductNavigate } from '../../../Routes/Navigation';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -28,9 +27,7 @@ const SuggestedProducts: React.FC = () => {
   const renderStars = (rating: number) => (
     <Rating value={rating} precision={0.5} readOnly sx={{ color: theme.colors.yellow }} />
   );
-  // const { navigateToCategoryNavigate } = useCategoryNavigate();
-  // const { navigateToProductDetails } = useProductNavigate();
-
+  
   return (
     <Box sx={suggestedProductsContainer}>
       <Typography variant="h4" sx={titleStyles}>

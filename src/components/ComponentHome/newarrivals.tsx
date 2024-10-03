@@ -22,6 +22,7 @@ import { Translations } from "@/Utils/Translation/Translation";
 import { discountStyle, typographyStyles } from "../../Styles/StyleHome/StyleTopSelling";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
 import { useRouter } from "next/navigation";
+import { useCategoryNavigate } from "@/routes/navigate";
 
 
 const NewArrivals: React.FC = () => {
@@ -67,6 +68,7 @@ const NewArrivals: React.FC = () => {
                             <Box
                                 component="img"
                                 onClick={() => {
+                                    router.push('/productdetails')
                                 }}
                                 src={product.image}
                                 alt={product.name}
@@ -101,7 +103,7 @@ const NewArrivals: React.FC = () => {
             <Button
                 variant="outlined"
                 sx={viewAllButton}
-                onClick={() => router.push('/category')}
+                onClick={() => router.push("/category")}
             >
                 <Typography sx={viewAllText}>{Translations.ViewAll}</Typography>
             </Button>

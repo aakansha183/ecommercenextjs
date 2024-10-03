@@ -7,17 +7,16 @@ import { Translations } from "../../Utils/Translation/Translation";
 import { ErrorMessage, MainContainer, SubmitButton, Title } from "../../CommonComponents/LoginCommonComponent";
 import { FormData } from "../../Utils/Interfaces/SignupInterfaces";
 import { useHandleRegister } from "../../components/SignupHandlers";
-// import { useLoginNavigate } from "../../Routes/Navigation";
 import Grid from '@mui/material/Grid2';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import LoginTextField from "@/components/CommonTextInputField";
+import { useLoginNavigate } from "@/routes/navigate";
 
 const Register: React.FC = () => {
   const [registrationError, setRegistrationError] = useState<string>(""); 
   const { onSubmit } = useHandleRegister(); 
-  // const { navigateToLogin } = useLoginNavigate(); 
 
   const {
     control,
@@ -119,7 +118,9 @@ const Register: React.FC = () => {
                   textDecoration: "underline",
                   cursor: "pointer",
                 }}
-                // onClick={navigateToLogin}
+                onClick={()=>
+                  useLoginNavigate()
+                }
               >
                 {Translations.Login}
               </Link>

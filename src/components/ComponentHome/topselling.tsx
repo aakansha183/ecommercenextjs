@@ -20,12 +20,12 @@ import axios from "axios";
 import { Translations } from "@/Utils/Translation/Translation";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
 import { useRouter } from "next/navigation";
+import { useCategoryNavigate } from "@/routes/navigate";
 
 
 const TopSelling: React.FC = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
-    const router =  useRouter()
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -97,7 +97,7 @@ const TopSelling: React.FC = () => {
                     </Grid>
                 ))}
             </Grid>
-            <Button variant="outlined" sx={buttonStyle} onClick={()=> router.push('/category')}>
+            <Button variant="outlined" sx={buttonStyle}  onClick={() => useCategoryNavigate()}>
                 <Typography sx={typographyStyles.buttonText}>{Translations.ViewAll}</Typography>
             </Button>
         </Box>

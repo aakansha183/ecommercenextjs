@@ -6,7 +6,7 @@ const products: Product[] = [
     id: 1,
     name: 'Polo with Contrast Trims',
     image: "/assests/Images/PrintedShirt.png",
-    price: 212,
+    price: 112,
     originalPrice: 242,
     discount: '-20%',
     rating: 4.0,
@@ -39,7 +39,7 @@ const products: Product[] = [
   {
     id: 5,
     name: "Vertical Striped Shirt",
-    price: 212,
+    price: 132,
     originalPrice: 232,
     discount: "-20%",
     rating: 5.0,

@@ -1,8 +1,6 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarOutline';
-import { ProductInfoProps } from '../../Utils/Interfaces/InterfacesProductInfo';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import {
   productInfoContainer,
@@ -15,21 +13,9 @@ import {
 } from '../../Styles/StyleProductDetails/StyleProductInfo';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
+import { ProductInfoProps } from '@/Utils/Interfaces/InterfacesProductInfo';
 
-const ProductInfo: React.FC<ProductInfoProps> = ({name,rating,price,originalPrice,discount}) =>  {
-  const[productsInfo, setProductsInfo] = useState<ProductInfoProps[]>([])
-  useEffect(() =>{
-    const fetchProductInfo = async () => {
-    try {
-      const response =  await axios.get('/api/products')
-      setProductsInfo(response.data)
-    } catch(error){
-      console.log('Error fetching profuct info ')
-    }
-  }
-    fetchProductInfo();
-  },[]);
+const ProductInfo: React.FC<ProductInfoProps> = ({ name, rating, price, originalPrice, discount }) => {
   const renderStars = (rating: number) => (
     <>
       {[...Array(5)].map((_, index) => {
@@ -70,3 +56,4 @@ const ProductInfo: React.FC<ProductInfoProps> = ({name,rating,price,originalPric
 };
 
 export default ProductInfo;
+

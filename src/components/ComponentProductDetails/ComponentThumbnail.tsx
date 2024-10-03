@@ -1,9 +1,9 @@
 import React from 'react';
-import { ProductThumbnailsProps } from '../../Utils/Interfaces/InterfacesThumbnail';
-import { thumbnailsContainerStyles, thumbnailBoxStyles, thumbnailImageStyles } from '../../Styles/StyleHome/StyleThumbnail';
+import { thumbnailsContainerStyles, thumbnailBoxStyles, thumbnailImageStyles } from '../../Styles/StyleProductDetails/StyleThumbnail';
 import useTheme from '@mui/material/styles/useTheme';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
+import { ProductThumbnailsProps } from '@/Utils/Interfaces/InterfacesThumbnail';
 
 const ProductThumbnails: React.FC<ProductThumbnailsProps> = ({ thumbnails, selectedThumbnail, handleThumbnailClick }) => {
   const theme = useTheme();

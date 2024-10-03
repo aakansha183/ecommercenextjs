@@ -1,14 +1,13 @@
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
 import { FormData } from "../Utils/Interfaces/SignupInterfaces";
 import { User } from "@/Utils/Interfaces/LoginInterfaces";
+import { useHomeNavigate } from "@/routes/navigate";
+
 
 export const useHandleRegister = () => {
   const { register: registerUser } = useAuth();
-  const navigate = useNavigate();
-
   const onSubmit: SubmitHandler<FormData> = async (values) => {
     try {
       const newUser: User = {
@@ -23,7 +22,7 @@ export const useHandleRegister = () => {
       toast.success("Successfully Registered", {
         theme: "dark",
       });
-      navigate("/Home");
+      useHomeNavigate();
     } catch (err) {
       if (err instanceof Error) {
         return err.message;

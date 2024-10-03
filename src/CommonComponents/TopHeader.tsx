@@ -29,7 +29,7 @@ const TopHeader: React.FC = () => {
         >
           {Translations.TopHeaderSubHead}{" "}
           <Link
-            href="/register"
+            href="/signup"
             style={{
               color: "#ffffff",
               textDecoration: "underline",
