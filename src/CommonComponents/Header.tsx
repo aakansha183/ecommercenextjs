@@ -23,6 +23,7 @@ import CartIcon from '../../public/assests/ImagesData/CartIcon';
 import AccountIcon from '../../public/assests/ImagesData/AccountIcon';
 import useAuth from '@/Hooks/UseAuth';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -64,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
-  // const { navigateToCart } = useCartNavigate();
+const router  = useRouter();
   const { logout, isLoggedIn } = useAuth();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -196,7 +197,7 @@ const Header: React.FC = () => {
           )}
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '20px' }}>
-            <IconButton color="inherit"  >
+            <IconButton color="inherit" onClick={() => router.push('/cart')} >
               <Badge badgeContent={cartQuantity} color="error">
                 <CartIcon />
               </Badge>

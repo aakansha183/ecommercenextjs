@@ -55,15 +55,15 @@ export const originalPriceStyles: SxProps<Theme> = {
 };
 
 export const discountStyles: SxProps<Theme> = {
-  color: theme.colors.red,
-  fontWeight: 'bold',
-  backgroundColor: theme.colors.lightred,
-  padding: '6px 14px',
+  color: "#FF3333",
+  fontWeight: "bold",
+  backgroundColor: "#FFE9F0",
+  padding: { xs: "4px 10px", md: "6px 14px" },
   marginLeft: 17,
   marginTop: -4,
-  width: '40px',
-  borderRadius: '62px',
-  textAlign: 'center',
+  width: "fit-content",
+  borderRadius: "62px",
+  textAlign: "center",
 };
 
 export const ratingStyles: SxProps<Theme> = {

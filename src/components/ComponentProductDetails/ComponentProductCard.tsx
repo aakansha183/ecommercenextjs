@@ -10,10 +10,10 @@ import {
   productNameStyles,
   priceStyles,
   originalPriceStyles,
-  discountStyles,
   ratingStyles,
   viewAllButtonStyles,
   viewAllTranslationstyles,
+  discountStyles,
 } from '../../Styles/StyleProductDetails/StyleSuggestedProducts';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
@@ -21,10 +21,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Translations } from '@/Utils/Translation/Translation';
 import { theme } from '@/Theme/Theme';
+import { useRouter } from 'next/navigation';
 
 const SuggestedProducts: React.FC = () => {
-
+  const router = useRouter()
   const renderStars = (rating: number) => (
+    
     <Rating value={rating} precision={0.5} readOnly sx={{ color: theme.colors.yellow }} />
   );
   
@@ -40,7 +42,7 @@ const SuggestedProducts: React.FC = () => {
               <Box
                 component="img"
                 onClick={() => {
-                  // navigateToProductDetails(product); 
+                router.push('/productdetails')
                 }}
                 src={product.image}
                 alt={product.name}
@@ -76,7 +78,7 @@ const SuggestedProducts: React.FC = () => {
       </Grid>
       <Button
         variant="outlined"
-        // onClick={navigateToCategoryNavigate}
+        onClick={()=> router.push('/category')}
         sx={viewAllButtonStyles}
       >
         <Typography sx={viewAllTranslationstyles}>{Translations.ViewAll}</Typography>

@@ -47,14 +47,21 @@ const ProductDetail: React.FC = () => {
 
   //used here to get the product based on these 
   const product: Product = {
-    id: searchParams.get("id") || "",
-    name: searchParams.get("name") || "",
-    image: searchParams.get("image") || "",
-    price: parseFloat(searchParams.get("price") || "0"),
-    rating: parseFloat(searchParams.get("rating") || "0"),
-    discount: searchParams.get("discount") || "0",
-    originalPrice: parseFloat(searchParams.get("originalPrice") || '0')
-      
+    
+    // id: searchParams.getAll("id") || "",
+    // name: searchParams.get("name") || "",
+    // image: searchParams.get("image") || "",
+    // price: parseFloat(searchParams.get("price") || "0"),
+    // rating: parseFloat(searchParams.get("rating") || "0"),
+    // discount: searchParams.get("discount") || "0",
+    // originalPrice: parseFloat(searchParams.get("originalPrice") || '0')
+    id: '5',
+    name: "Vertical Striped Shirt",
+    price: 132,
+    originalPrice: 232,
+    discount: "-20%",
+    rating: 5.0,
+    image: "/assests/Images/OrangeBlackTshirt.png",
   };
 
   const handleThumbnailClick = (index: number) => {

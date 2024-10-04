@@ -22,7 +22,6 @@ import { Translations } from "@/Utils/Translation/Translation";
 import { discountStyle, typographyStyles } from "../../Styles/StyleHome/StyleTopSelling";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
 import { useRouter } from "next/navigation";
-import { useCategoryNavigate } from "@/routes/navigate";
 
 
 const NewArrivals: React.FC = () => {

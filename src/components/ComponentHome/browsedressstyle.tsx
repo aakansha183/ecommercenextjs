@@ -1,16 +1,12 @@
+"use client"
 import { Box, Typography } from "@mui/material";
-import Casual from "../../../../../public/assests/Images/Casual.png";
-import Formal from "../../../../../public/assests/Images/Formal.png";
-import Party from "../../../../../public/assests/Images/Party.png";
-import Gym from "../../../../../public/assests/Images/Gym.png";
-// import { useCategoryNavigate } from "../../../Routes/Navigation";
 import Grid from "@mui/material/Grid2"; 
 import { Translations } from "@/Utils/Translation/Translation";
 import { styles, text } from "../../Styles/StyleHome/styleshome";
+import { useRouter } from "next/navigation";
 
 const DressStyleComponent = () => {
-//   const { navigateToCategoryNavigate } = useCategoryNavigate();
-
+const router = useRouter();
   return (
     <Box sx={styles.container}>
       <Typography
@@ -35,7 +31,7 @@ const DressStyleComponent = () => {
               src= "/assests/Images/Casual.png"
               alt="Casual"
               style={{ ...styles.image ,marginBottom:'-130px'}}
-            //   onClick={navigateToCategoryNavigate}
+            onClick={()=> router.push('/category')}
               
             />
           </Box>
@@ -53,7 +49,7 @@ const DressStyleComponent = () => {
               src = '/assests/Images/Formal.png'
               alt="Formal"
               style={{ ...styles.image }}
-            //   onClick={navigateToCategoryNavigate}
+              onClick={()=> router.push('/category')}
             />
           </Box>
         </Grid>
@@ -70,7 +66,7 @@ const DressStyleComponent = () => {
               src="/assests/Images/Party.png"
               alt="Party"
               style={{ ...styles.image }}
-            //   onClick={navigateToCategoryNavigate}
+              onClick={()=> router.push('/category')}
             />
           </Box>
         </Grid>
@@ -86,8 +82,9 @@ const DressStyleComponent = () => {
             <img
               src="/assests/Images/Gym.png"
               alt="Gym"
+             
               style={{ ...styles.image,marginBottom:'-140px'  }}
-            //   onClick={navigateToCategoryNavigate}
+              onClick={()=> router.push('/category')}
             />
           </Box>
         </Grid>
