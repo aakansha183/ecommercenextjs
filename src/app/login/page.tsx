@@ -14,7 +14,6 @@ import { ErrorMessage, MainContainer, SubmitButton, Title } from "../../CommonCo
 import LoginTextField from "@/components/CommonTextInputField";
 import { useLoginHandler } from "@/components/LoginHandlers";
 import { useRouter } from "next/navigation";
-import { useSignupNavigate } from "@/routes/navigate";
 
 const Login: React.FC = () => {
   const [error, setError] = useState<string>("");
@@ -71,7 +70,7 @@ const router =  useRouter();
         <Grid container justifyContent="center">
           <Grid size={{ xs: 'auto' }}>
             {Translations.LoginSubHead}{" "}
-            <Link component="button" variant="body2" onClick={()=> useSignupNavigate() } >
+            <Link component="button" variant="body2" onClick={()=>  router.push('/signup') } >
               {Translations.Register}
               
             </Link>

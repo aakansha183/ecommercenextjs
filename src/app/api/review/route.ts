@@ -1,6 +1,5 @@
-
-import { Review } from "../Interfaces/InterfaceReview";
-
+import { Review } from "@/Utils/Interfaces/InterfaceReview";
+import { NextResponse } from "next/server";
 
 export const initialReviews: Review[] = [
   {
@@ -46,11 +45,15 @@ export const initialReviews: Review[] = [
     review: "I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter.",
   },
 ];
-
 export const defaultNewReview: Review = {
-  id: 0,
-  name: '',
-  rating: 0,
-  date: '',
-  review: '',
+    id: 0,
+    name: '',
+    rating: 0,
+    date: '',
+    review: '',
+  };
+
+export async function GET(){
+    return NextResponse.json(initialReviews);
+    
 };

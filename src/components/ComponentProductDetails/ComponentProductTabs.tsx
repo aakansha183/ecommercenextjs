@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
@@ -13,9 +13,10 @@ import useTheme from '@mui/material/styles/useTheme';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Translations } from '@/Utils/Translation/Translation';
 import { Review } from '@/Utils/Interfaces/InterfaceReview';
-import { initialReviews, defaultNewReview } from '@/Utils/Constants/ConstantsReview';
+import {  defaultNewReview } from '@/Utils/Constants/ConstantsReview';
 import FilterIcon from '../../../public/assests/ImagesData/FilterIcon';
 import ReviewsList from './ComponentReviews';
+import axios from 'axios';
 
 function TabPanel(props: { children?: React.ReactNode; index: number; value: number }) {
   const { children, value, index, ...other } = props;
@@ -41,8 +42,22 @@ const ProductTabs: React.FC = () => {
   const [value, setValue] = useState(1);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [reviewOpen, setReviewOpen] = useState(false);
-  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [newReview, setNewReview] = useState<Review>(defaultNewReview);
+
+  useEffect(() =>{
+    const fetchReviews =  async() =>{
+      try{
+        const response = await axios.get('/api/review');
+        setReviews(response.data)
+      }
+      catch(error)
+      {
+        console.log("Error fetching reviews")
+      }
+    };
+    fetchReviews();
+  },[])
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

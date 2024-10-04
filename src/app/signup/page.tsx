@@ -13,8 +13,10 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import LoginTextField from "@/components/CommonTextInputField";
 import { useLoginNavigate } from "@/routes/navigate";
+import { useRouter } from "next/navigation";
 
 const Register: React.FC = () => {
+  const router =  useRouter();
   const [registrationError, setRegistrationError] = useState<string>(""); 
   const { onSubmit } = useHandleRegister(); 
 
@@ -119,7 +121,7 @@ const Register: React.FC = () => {
                   cursor: "pointer",
                 }}
                 onClick={()=>
-                  useLoginNavigate()
+                  router.push('/login')
                 }
               >
                 {Translations.Login}

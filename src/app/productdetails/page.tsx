@@ -33,7 +33,8 @@ import ProductTabs from "@/components/ComponentProductDetails/ComponentProductTa
 import SuggestedProducts from "@/components/ComponentProductDetails/ComponentProductCard";
 import { theme } from "@/Theme/Theme";
 
-const ProductDetail: React.FC = () => {
+const ProductDetail: React.FC = (props) => {
+  console.log(props, 'PP')
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedThumbnail, setSelectedThumbnail] = useState<number | null>(
     null
@@ -41,28 +42,29 @@ const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const searchParams = useSearchParams();  // Searchparams used instead of query
-
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
   //used here to get the product based on these 
   const product: Product = {
     
-    // id: searchParams.getAll("id") || "",
-    // name: searchParams.get("name") || "",
-    // image: searchParams.get("image") || "",
-    // price: parseFloat(searchParams.get("price") || "0"),
-    // rating: parseFloat(searchParams.get("rating") || "0"),
-    // discount: searchParams.get("discount") || "0",
-    // originalPrice: parseFloat(searchParams.get("originalPrice") || '0')
-    id: '5',
-    name: "Vertical Striped Shirt",
-    price: 132,
-    originalPrice: 232,
-    discount: "-20%",
-    rating: 5.0,
-    image: "/assests/Images/OrangeBlackTshirt.png",
+    id: searchParams.get("id") || "",
+    name: searchParams.get("name") || "",
+    image: searchParams.get("image") || "",
+    price: parseFloat(searchParams.get("price") || "0"),
+    rating: parseFloat(searchParams.get("rating") || "0"),
+    discount: searchParams.get("discount") || "0",
+    originalPrice: parseFloat(searchParams.get("originalPrice") || '0')
+    
+    // id: '5',
+    // name: "Vertical Striped Shirt",
+    // price: 132,
+    // originalPrice: 232,
+    // discount: "-20%",
+    // rating: 5.0,
+    // image: "/assests/Images/OrangeBlackTshirt.png",
   };
+  console.log("see",searchParams.get("id"))
 
   const handleThumbnailClick = (index: number) => {
     setSelectedThumbnail(index);

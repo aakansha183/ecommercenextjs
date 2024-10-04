@@ -28,6 +28,8 @@ const NewArrivals: React.FC = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
     const router = useRouter();
+   
+    console.log(router, 'JJ')
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -63,11 +65,12 @@ const NewArrivals: React.FC = () => {
             <Grid container spacing={4} justifyContent="center" wrap="wrap">
                 {products.map((product) => (
                     <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
+                        
                         <Box sx={NewArrivalImage}>
                             <Box
                                 component="img"
                                 onClick={() => {
-                                    router.push('/productdetails')
+                                    router.push(`/productdetails?id=${product.id}`)
                                 }}
                                 src={product.image}
                                 alt={product.name}
@@ -107,7 +110,7 @@ const NewArrivals: React.FC = () => {
                 <Typography sx={viewAllText}>{Translations.ViewAll}</Typography>
             </Button>
         </Box>
+         
     );
 };
-
 export default NewArrivals;
