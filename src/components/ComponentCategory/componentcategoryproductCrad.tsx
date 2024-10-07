@@ -32,10 +32,12 @@ import { Translations } from "@/Utils/Translation/Translation";
 import axios from "axios";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
 import { useFilter } from "./FilterContext";
-// import { useProductNavigate } from "../../../Routes/Navigation";
+import { useRouter } from "next/navigation";
 
 const ProductGrid: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const router = useRouter();
+  
   useEffect(() => {
       const fetchProducts = async () => {
           try {
@@ -48,7 +50,6 @@ const ProductGrid: React.FC = () => {
       };
       fetchProducts();
   }, []);
-  // const { navigateToProductDetails } = useProductNavigate();
   const { priceRange } = useFilter();
 
   const filteredProducts = products.filter(
@@ -83,7 +84,7 @@ const ProductGrid: React.FC = () => {
               <Box
                 component="img"
                 onClick={() => {
-                  // navigateToProductDetails(product); 
+                  router.push("/productdetails")
                 }}
                 src={product.image}
                 alt={product.name}

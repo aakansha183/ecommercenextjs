@@ -76,4 +76,3 @@ const products: Product[] = [
 export async function GET() {
   return NextResponse.json(products);
 }
-

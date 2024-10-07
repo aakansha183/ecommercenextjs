@@ -22,14 +22,16 @@ import { Translations } from "@/Utils/Translation/Translation";
 import { discountStyle, typographyStyles } from "../../Styles/StyleHome/StyleTopSelling";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
 import { useRouter } from "next/navigation";
+import { Player } from "@lottiefiles/react-lottie-player";
+import loader from "../../../public/assests/ImagesData/Loading.json"
 
 
 const NewArrivals: React.FC = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
     const router = useRouter();
+    const [loading,setLoading] = useState<boolean>(true);
    
-    console.log(router, 'JJ')
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -38,7 +40,11 @@ const NewArrivals: React.FC = () => {
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
+            finally{
+                setLoading(false)
+            }
         };
+
         fetchProducts();
     }, []);
 
@@ -56,6 +62,18 @@ const NewArrivals: React.FC = () => {
             </>
         );
     };
+
+    if (loading) {
+        return (
+             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <Player
+            src={loader}
+            loop
+            autoplay
+          />
+           </Box>
+        );
+    }
 
     return (
         <Box id="newarrivals" sx={newArrivalBox}>

@@ -5,6 +5,7 @@ import TopHeader from "@/CommonComponents/TopHeader";
 import Header from "@/CommonComponents/Header";
 import NewArrivals from "@/components/ComponentHome/newarrivals";
 import DressStyleComponent from "@/components/ComponentHome/browsedressstyle";
+import { Suspense } from "react";
 
 export default function HomePage() {
   return (

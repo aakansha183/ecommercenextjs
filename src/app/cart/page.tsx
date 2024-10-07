@@ -1,5 +1,5 @@
 "use client"
-import { Box, Divider, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import React from "react";
 import TopHeader from "../../CommonComponents/TopHeader";
 import Header from "../../CommonComponents/Header";

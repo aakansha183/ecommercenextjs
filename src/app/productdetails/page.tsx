@@ -41,11 +41,10 @@ const ProductDetail: React.FC = (props) => {
   );
   const [quantity, setQuantity] = useState<number>(1);
 
-  const searchParams = useSearchParams();  // Searchparams used instead of query
+  const searchParams = useSearchParams();  
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  //used here to get the product based on these 
   const product: Product = {
     
     id: searchParams.get("id") || "",

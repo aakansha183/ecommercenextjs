@@ -19,12 +19,12 @@ import Grid from "@mui/material/Grid2";
 import axios from "axios";
 import { Translations } from "@/Utils/Translation/Translation";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
-import { useRouter } from "next/navigation";
 import { useCategoryNavigate } from "@/routes/navigate";
+import { useRouter } from "next/navigation";
 
 
 const TopSelling: React.FC = () => {
-
+    const router = useRouter();
     const [products, setProducts] = useState<Product[]>([]);
     useEffect(() => {
         const fetchProducts = async () => {
@@ -67,7 +67,7 @@ const TopSelling: React.FC = () => {
                                 src={product.image}
                                 alt={product.name}
                                 style={imageStyle}
-                            // onClick={() => }
+                                onClick ={()=>router.push('/product')}
                             />
                             <Typography variant="subtitle1" sx={typographyStyles.productTitle}>
                                 {product.name}
