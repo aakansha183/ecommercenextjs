@@ -1,5 +1,4 @@
-import React from 'react';
-import { products } from '../../Utils/Constants/ConstantsProductCard';
+import React, { useEffect, useState } from 'react';
 import Grid from "@mui/material/Grid2";
 
 import {
@@ -22,14 +21,30 @@ import Button from '@mui/material/Button';
 import { Translations } from '@/Utils/Translation/Translation';
 import { theme } from '@/Theme/Theme';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { Product } from '@/Utils/Interfaces/InterfaceProduct';
 
 const SuggestedProducts: React.FC = () => {
   const router = useRouter()
+  const [products,setProducts]  = useState<Product[]>([])
   const renderStars = (rating: number) => (
     
     <Rating value={rating} precision={0.5} readOnly sx={{ color: theme.colors.yellow }} />
   );
-  
+useEffect(()=>{
+  const fetchProducts =  async ()=>{
+    try{
+      const response = await axios.get('/api/products/productsinfo')
+      setProducts(response.data.slice(0,4))
+    }
+    catch(error){
+console.log("Error Fetching data")
+    }
+  }
+  fetchProducts();
+},[])
+
+
   return (
     <Box sx={suggestedProductsContainer}>
       <Typography variant="h4" sx={titleStyles}>
@@ -42,7 +57,7 @@ const SuggestedProducts: React.FC = () => {
               <Box
                 component="img"
                 onClick={() => {
-                router.push('/productdetails')
+                router.push(`/productdetails?id=${product.id}`)
                 }}
                 src={product.image}
                 alt={product.name}

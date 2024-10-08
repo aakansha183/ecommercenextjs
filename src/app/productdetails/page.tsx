@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { useSearchParams } from "next/navigation"; 
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import TopHeader from "../../CommonComponents/TopHeader";
 import Header from "../../CommonComponents/Header";
@@ -32,38 +32,45 @@ import ProductDetailsActions from "@/components/ComponentProductDetails/Componen
 import ProductTabs from "@/components/ComponentProductDetails/ComponentProductTabs";
 import SuggestedProducts from "@/components/ComponentProductDetails/ComponentProductCard";
 import { theme } from "@/Theme/Theme";
+import { Player } from "@lottiefiles/react-lottie-player";
+import loader from "../../../public/assests/ImagesData/Loading.json"
 
-const ProductDetail: React.FC = (props) => {
-  console.log(props, 'PP')
+const ProductDetail: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const [selectedThumbnail, setSelectedThumbnail] = useState<number | null>(
-    null
-  );
+  const [selectedThumbnail, setSelectedThumbnail] = useState<number | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
+  const [product, setProduct] = useState<Product | null>(null); 
+  const [loading, setLoading] = useState<boolean>(true); 
 
   const searchParams = useSearchParams();  
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  const product: Product = {
-    
-    id: searchParams.get("id") || "",
-    name: searchParams.get("name") || "",
-    image: searchParams.get("image") || "",
-    price: parseFloat(searchParams.get("price") || "0"),
-    rating: parseFloat(searchParams.get("rating") || "0"),
-    discount: searchParams.get("discount") || "0",
-    originalPrice: parseFloat(searchParams.get("originalPrice") || '0')
-    
-    // id: '5',
-    // name: "Vertical Striped Shirt",
-    // price: 132,
-    // originalPrice: 232,
-    // discount: "-20%",
-    // rating: 5.0,
-    // image: "/assests/Images/OrangeBlackTshirt.png",
-  };
-  console.log("see",searchParams.get("id"))
+  const productId = searchParams.get("id");
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`/api/products/${productId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setProduct(data);
+        } else {
+          showToastError("Product not found");
+        }
+      } catch (error) {
+        showToastError("Error fetching product");
+      } finally {
+        setLoading(false);
+      }
+    };
+    console.log("fetchProducts",fetchProduct());
+
+    if (productId) {
+      fetchProduct();
+    }
+  }, [productId]);
+
 
   const handleThumbnailClick = (index: number) => {
     setSelectedThumbnail(index);
@@ -83,12 +90,12 @@ const ProductDetail: React.FC = (props) => {
       const selectedColor = theme.colors.selectedColor;
 
       const isItemInCart = cartItems.find(
-        (item) => item.id === product.id && item.size === selectedSize
+        (item) => item.id === product?.id && item.size === selectedSize
       );
 
       if (isItemInCart) {
         showToastError("Item is already in the cart");
-      } else {
+      } else if (product) {
         dispatch(
           addToCart({
             id: product.id,
@@ -105,6 +112,22 @@ const ProductDetail: React.FC = (props) => {
       }
     }
   };
+
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+     <Player
+     src={loader}
+     loop
+     autoplay
+   />
+    </Box>
+ );;
+  }
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
   return (
     <Box sx={containerStyles}>
@@ -168,3 +191,5 @@ const ProductDetail: React.FC = (props) => {
 };
 
 export default ProductDetail;
+
+

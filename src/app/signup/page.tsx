@@ -12,7 +12,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import LoginTextField from "@/components/CommonTextInputField";
-import { useLoginNavigate } from "@/routes/navigate";
 import { useRouter } from "next/navigation";
 
 const Register: React.FC = () => {

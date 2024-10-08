@@ -41,7 +41,7 @@ const ProductGrid: React.FC = () => {
   useEffect(() => {
       const fetchProducts = async () => {
           try {
-              const response = await axios.get('/api/products');
+              const response = await axios.get('/api/products/productsinfo');
               setProducts(response.data);
               console.log(response.data)
           } catch (error) {
@@ -84,7 +84,7 @@ const ProductGrid: React.FC = () => {
               <Box
                 component="img"
                 onClick={() => {
-                  router.push("/productdetails")
+                  router.push(`/productdetails?id=${product.id}`)
                 }}
                 src={product.image}
                 alt={product.name}

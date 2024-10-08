@@ -35,7 +35,7 @@ const NewArrivals: React.FC = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('/api/products');
+                const response = await axios.get('/api/products/productsinfo');
                 setProducts(response.data.slice(0,4))
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -90,6 +90,7 @@ const NewArrivals: React.FC = () => {
                                 onClick={() => {
                                     router.push(`/productdetails?id=${product.id}`)
                                 }}
+                               
                                 src={product.image}
                                 alt={product.name}
                                 sx={newArrivalImageBox}

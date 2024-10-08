@@ -29,7 +29,6 @@ import {
 } from "../../Styles/StyleCart/StyleCartComponent"
 import IncrementDecrementBox from "../ComponentProductDetails/ComponentIncrementDecrementBox";
 import DeleteIcon from "../../../public/assests/ImagesData/DeleteIcon";
-import { showToastInfo } from "@/CommonComponents/Toast";
 import { removeItem, updateQuantity } from "@/Redux/cartSlice";
 import { Translations } from "@/Utils/Translation/Translation";
 import { RootState } from "@/Redux/Store";
@@ -64,7 +63,6 @@ const CartComponent: React.FC = () => {
 
   const handleDelete = (itemId: ItemId) => {
     dispatch(removeItem(itemId));
-    showToastInfo("Item is removed from cart")
   };
 
   const subtotal = cartItems.reduce(

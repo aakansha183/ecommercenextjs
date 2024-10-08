@@ -11,7 +11,7 @@ const useAuth = (): AuthState => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state: RootState) => state.users.currentUser);
 
-  const isLoggedIn = !!currentUser;
+   const isLoggedIn = !!currentUser;
 
   const login = async (username: string, password: string): Promise<boolean> => {
     try {

@@ -29,7 +29,7 @@ const TopSelling: React.FC = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('/api/products');
+                const response = await axios.get('/api/products/productsinfo');
                 setProducts(response.data.slice(-4));
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -64,10 +64,11 @@ const TopSelling: React.FC = () => {
                     <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
                         <Box sx={cardContainerStyle}>
                             <img
+                            onClick ={()=>router.push(`/productdetails?id=${product.id}`)}
                                 src={product.image}
                                 alt={product.name}
                                 style={imageStyle}
-                                onClick ={()=>router.push('/product')}
+                                
                             />
                             <Typography variant="subtitle1" sx={typographyStyles.productTitle}>
                                 {product.name}

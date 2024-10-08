@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import useAuth from "../Hooks/UseAuth";
 import { FormData } from "../Utils/Interfaces/SignupInterfaces";
 import { User } from "@/Utils/Interfaces/LoginInterfaces";
-import { useHomeNavigate } from "@/routes/navigate";
 import { useRouter } from "next/navigation";
 
 
@@ -24,7 +23,6 @@ export const useHandleRegister = () => {
       toast.success("Successfully Registered", {
         theme: "dark",
       });
-      // useHomeNavigate();
       router.push("/home")
     } catch (err) {
       if (err instanceof Error) {
