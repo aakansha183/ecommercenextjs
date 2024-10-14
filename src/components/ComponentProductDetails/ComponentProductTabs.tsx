@@ -13,7 +13,7 @@ import useTheme from '@mui/material/styles/useTheme';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Translations } from '@/Utils/Translation/Translation';
 import { Review } from '@/Utils/Interfaces/InterfaceReview';
-import {  defaultNewReview } from '@/Utils/Constants/ConstantsReview';
+import { defaultNewReview } from '@/Utils/Constants/ConstantsReview';
 import FilterIcon from '../../../public/assests/ImagesData/FilterIcon';
 import ReviewsList from './ComponentReviews';
 import axios from 'axios';
@@ -45,19 +45,18 @@ const ProductTabs: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [newReview, setNewReview] = useState<Review>(defaultNewReview);
 
-  useEffect(() =>{
-    const fetchReviews =  async() =>{
-      try{
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
         const response = await axios.get('/api/review');
         setReviews(response.data)
       }
-      catch(error)
-      {
+      catch (error) {
         console.log("Error fetching reviews")
       }
     };
     fetchReviews();
-  },[])
+  }, [])
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -147,7 +146,7 @@ const ProductTabs: React.FC = () => {
               textAlign: isMobile ? 'center' : 'left',
             }}
           >
-           {Translations.AllReviews}({reviews.length})
+            {Translations.AllReviews}({reviews.length})
           </Typography>
           <Box display="flex" alignItems="center" flexDirection={isMobile ? 'column' : 'row'}>
             <Box sx={{ marginRight: isMobile ? '0' : '10px' }}>

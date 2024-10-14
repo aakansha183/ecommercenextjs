@@ -12,7 +12,7 @@ import Footer from "@/CommonComponents/Footer";
 import { useRouter } from "next/navigation";
 
 const Checkout: React.FC = () => {
-const router =  useRouter();
+  const router = useRouter();
   return (
     <Box>
       <TopHeader />
@@ -27,8 +27,8 @@ const router =  useRouter();
           <Player
             src={CelebAnimation}
             style={{
-              width: "100%", 
-              maxWidth: "400px", 
+              width: "100%",
+              maxWidth: "400px",
               height: "300px",
               position: "absolute",
               top: "-50px",
@@ -48,8 +48,8 @@ const router =  useRouter();
         <Player
           src={checkoutAnimation}
           style={{
-            width: "100%", 
-            maxWidth: "400px", 
+            width: "100%",
+            maxWidth: "400px",
             height: "300px",
             marginBottom: "-28px",
           }}

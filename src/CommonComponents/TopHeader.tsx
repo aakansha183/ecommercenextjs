@@ -35,7 +35,7 @@ const TopHeader: React.FC = () => {
               textDecoration: "underline",
             }}
           >
-           {Translations.SignUpNow}
+            {Translations.SignUpNow}
           </Link>
         </Typography>
         <IconButton

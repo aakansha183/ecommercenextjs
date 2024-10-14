@@ -30,17 +30,17 @@ const NewArrivals: React.FC = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
     const router = useRouter();
-    const [loading,setLoading] = useState<boolean>(true);
-   
+    const [loading, setLoading] = useState<boolean>(true);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.get('/api/products/productsinfo');
-                setProducts(response.data.slice(0,4))
+                setProducts(response.data.slice(0, 4))
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
-            finally{
+            finally {
                 setLoading(false)
             }
         };
@@ -65,13 +65,13 @@ const NewArrivals: React.FC = () => {
 
     if (loading) {
         return (
-             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <Player
-            src={loader}
-            loop
-            autoplay
-          />
-           </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <Player
+                    src={loader}
+                    loop
+                    autoplay
+                />
+            </Box>
         );
     }
 
@@ -83,14 +83,14 @@ const NewArrivals: React.FC = () => {
             <Grid container spacing={4} justifyContent="center" wrap="wrap">
                 {products.map((product) => (
                     <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
-                        
+
                         <Box sx={NewArrivalImage}>
                             <Box
                                 component="img"
                                 onClick={() => {
                                     router.push(`/productdetails?id=${product.id}`)
                                 }}
-                               
+
                                 src={product.image}
                                 alt={product.name}
                                 sx={newArrivalImageBox}
@@ -129,7 +129,7 @@ const NewArrivals: React.FC = () => {
                 <Typography sx={viewAllText}>{Translations.ViewAll}</Typography>
             </Button>
         </Box>
-         
+
     );
 };
 export default NewArrivals;

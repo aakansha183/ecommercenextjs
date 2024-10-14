@@ -10,13 +10,13 @@ import { Suspense } from "react";
 export default function HomePage() {
   return (
     <div>
-      <TopHeader/>
-      <Header/>
-     <NewArrivals/>
-      <TopSelling/>
-      <DressStyleComponent/>
-      <Testimonials/>
-      <Footer/>
+      <TopHeader />
+      <Header />
+      <NewArrivals />
+      <TopSelling />
+      <DressStyleComponent />
+      <Testimonials />
+      <Footer />
     </div>
   );
 }

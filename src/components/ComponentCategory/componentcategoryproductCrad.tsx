@@ -8,7 +8,7 @@ import {
   Pagination,
   Divider,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2"; 
+import Grid from "@mui/material/Grid2";
 import {
   containerStyles,
   headerBoxStyles,
@@ -37,18 +37,18 @@ import { useRouter } from "next/navigation";
 const ProductGrid: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const router = useRouter();
-  
+
   useEffect(() => {
-      const fetchProducts = async () => {
-          try {
-              const response = await axios.get('/api/products/productsinfo');
-              setProducts(response.data);
-              console.log(response.data)
-          } catch (error) {
-              console.error("Error fetching products:", error);
-          }
-      };
-      fetchProducts();
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('/api/products/productsinfo');
+        setProducts(response.data);
+        console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
   }, []);
   const { priceRange } = useFilter();
 
@@ -79,7 +79,7 @@ const ProductGrid: React.FC = () => {
       </Box>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {filteredProducts.map((product) => (
-          <Grid size = {{xs:12 ,sm:6, md:4 }} key={product.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
             <Box sx={productCardStyles}>
               <Box
                 component="img"

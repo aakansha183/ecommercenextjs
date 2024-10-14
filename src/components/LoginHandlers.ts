@@ -2,9 +2,12 @@ import { toast } from "react-toastify";
 import { LoginFormValues } from "../Utils/Interfaces/LoginInterfaces";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react"
+import { useAppContext } from "@/context";
 
 export const useLoginHandler = () => {
   const router = useRouter();
+  const { setIsLoggedIn } = useAppContext();
+
 
   const onSubmit = async (values: LoginFormValues, setError: (error: string) => void) => {
     try {
@@ -14,9 +17,10 @@ export const useLoginHandler = () => {
         redirect: false,
 
       });
-      console.log("sucees status",success)
+      console.log("sucees status", success)
       if (success) {
         router.push("/home")
+        setIsLoggedIn(true)
         toast.success("Successfully Logged In", { theme: "dark" });
       } else {
         setError("Invalid username or password");

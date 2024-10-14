@@ -3,7 +3,7 @@ import React from 'react';
 import IncrementDecrementBox from './ComponentIncrementDecrementBox';
 import { useDispatch } from 'react-redux';
 import { ProductDetailsActionsProps } from '../../Utils/Interfaces/InterfaceProductDetailsActions';
-import { productDetailsActionsBoxStyle, addToCartButtonStyle } from '../../Styles/StyleProductDetails/StyleProductDetailsAction'; 
+import { productDetailsActionsBoxStyle, addToCartButtonStyle } from '../../Styles/StyleProductDetails/StyleProductDetailsAction';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Translations } from '@/Utils/Translation/Translation';
@@ -36,7 +36,7 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
         onClick={handleaddToCart}
         sx={addToCartButtonStyle}
       >
-       {Translations.addToCart}
+        {Translations.addToCart}
       </Button>
     </Box>
   );

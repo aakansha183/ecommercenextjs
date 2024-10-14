@@ -4,24 +4,24 @@ import { TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { LoginTextFieldProps } from "@/Utils/Interfaces/LoginInterfaces";
 const LoginTextField: React.FC<LoginTextFieldProps> = ({
-             id,
+  id,
   label,
   type = "text",
   control,
   defaultValue = "",
-                 rules,
+  rules,
   error,
   helperText,
   fullWidth = true,
   variant = "outlined",
 }) => {
-                          return (
+  return (
     <Controller
       name={id}
       control={control}
       defaultValue={defaultValue}
       rules={rules}
-                render={({ field }) => (
+      render={({ field }) => (
         <TextField
           {...field}
           label={label}
@@ -37,7 +37,7 @@ const LoginTextField: React.FC<LoginTextFieldProps> = ({
               },
             },
           }}
-          
+
         />
       )}
     />

@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import { styled, useTheme } from '@mui/material/styles';
-import {  useMediaQuery, Badge } from '@mui/material';
+import { useMediaQuery, Badge } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -67,8 +67,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
-const router  = useRouter();
-const{isLoggedIn,setIsLoggedIn} = useAppContext();
+  const router = useRouter();
+  const { isLoggedIn, setIsLoggedIn } = useAppContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
@@ -89,9 +89,9 @@ const{isLoggedIn,setIsLoggedIn} = useAppContext();
   const handleLogout = async () => {
     if (isLoggedIn) {
       signOut({
-        redirect:false
-        
-      }).then(()=>{
+        redirect: false
+
+      }).then(() => {
         setIsLoggedIn(false)
         router.push("/")
       })
@@ -113,7 +113,7 @@ const{isLoggedIn,setIsLoggedIn} = useAppContext();
   const drawerContent = (
     <Box sx={drawerStyles} role="presentation">
       <Typography variant="h6" sx={drawerTitle}>
-       {Translations.SHOP_CO}
+        {Translations.SHOP_CO}
       </Typography>
       <Link href="/Category" style={{ textDecoration: 'none', color: 'inherit' }}>
         <Typography variant="body1" sx={{ marginBottom: 2 }}>{Translations.Shop}</Typography>
@@ -157,7 +157,7 @@ const{isLoggedIn,setIsLoggedIn} = useAppContext();
                   noWrap
                   sx={logoText}
                 >
-                 {Translations.SHOP_CO}
+                  {Translations.SHOP_CO}
                 </Typography>
               </Link>
               <Box sx={navLinks}>
@@ -174,7 +174,7 @@ const{isLoggedIn,setIsLoggedIn} = useAppContext();
           )}
 
           <Box sx={{ flexGrow: 1 }} />
-          
+
           {!isMobile ? (
             <Search>
               <SearchIconWrapper>
@@ -224,7 +224,7 @@ const{isLoggedIn,setIsLoggedIn} = useAppContext();
                 </MenuItem>
               ) : (
                 <MenuItem onClick={() => toast.error("Please log in or sign up", { theme: 'dark' })}>
-                 {Translations.LoginORSignUp}
+                  {Translations.LoginORSignUp}
                 </MenuItem>
               )}
             </Menu>

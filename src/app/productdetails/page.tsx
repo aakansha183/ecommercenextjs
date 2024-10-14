@@ -39,10 +39,10 @@ const ProductDetail: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedThumbnail, setSelectedThumbnail] = useState<number | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
-  const [product, setProduct] = useState<Product | null>(null); 
-  const [loading, setLoading] = useState<boolean>(true); 
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const searchParams = useSearchParams();  
+  const searchParams = useSearchParams();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
@@ -64,7 +64,7 @@ const ProductDetail: React.FC = () => {
         setLoading(false);
       }
     };
-    console.log("fetchProducts",fetchProduct());
+    console.log("fetchProducts", fetchProduct());
 
     if (productId) {
       fetchProduct();
@@ -116,13 +116,13 @@ const ProductDetail: React.FC = () => {
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-     <Player
-     src={loader}
-     loop
-     autoplay
-   />
-    </Box>
- );;
+        <Player
+          src={loader}
+          loop
+          autoplay
+        />
+      </Box>
+    );;
   }
 
   if (!product) {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography, TextField, Button, InputAdornment, Divider } from '@mui/material';
 import { Email } from '@mui/icons-material';
-import Grid from '@mui/material/Grid2';  
+import Grid from '@mui/material/Grid2';
 import {
   footerContainer,
   newsletterSection,

@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";  
+import Grid from "@mui/material/Grid2";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,7 +37,7 @@ import { useRouter } from "next/navigation";
 type ItemId = string;
 
 const CartComponent: React.FC = () => {
-  const router =  useRouter();
+  const router = useRouter();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const theme = useTheme();
@@ -73,7 +73,7 @@ const CartComponent: React.FC = () => {
   const deliveryFee = 15;
   const total = subtotal - discount + deliveryFee;
 
- 
+
 
   return (
     <Box
@@ -82,7 +82,7 @@ const CartComponent: React.FC = () => {
       <Typography
         sx={isMobile ? mobileHeadingStyles : headingStyles}
       >
-       {Translations.YOURCART}
+        {Translations.YOURCART}
       </Typography>
 
       {cartItems.length === 0 ? (
@@ -180,7 +180,7 @@ const CartComponent: React.FC = () => {
                     alignItems={isMobile ? "center" : "flex-end"}
                     gap={isMobile ? "10px" : "0"}
                   >
-                    
+
                     <Box onClick={() => handleDelete(item.id)}>
                       <IconButton>
                         <DeleteIcon />
@@ -212,7 +212,7 @@ const CartComponent: React.FC = () => {
                 lineHeight: isMobile ? "28px" : "32.4px",
               }}
             >
-             {Translations.OrderSummary}
+              {Translations.OrderSummary}
             </Typography>
             <Box mb={2}>
               <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -323,9 +323,9 @@ const CartComponent: React.FC = () => {
               color="primary"
               fullWidth
               sx={buttonStyles}
-              onClick={()=> router.push('/checkout')}
+              onClick={() => router.push('/checkout')}
             >
-             {Translations.ProceedtoCheckout}
+              {Translations.ProceedtoCheckout}
             </Button>
           </Box>
         </Box>

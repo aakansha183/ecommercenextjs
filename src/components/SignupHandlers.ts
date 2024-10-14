@@ -5,8 +5,7 @@ import { useAppContext } from "@/context";
 
 export const useHandleRegister = () => {
 
-  const { isLoggedIn, setIsLoggedIn } = useAppContext();
-  console.log("login state", isLoggedIn)
+  const { setIsLoggedIn } = useAppContext();
 
   const router = useRouter();
   const onSubmit: SubmitHandler<FormData> = async (values) => {
@@ -33,11 +32,9 @@ export const useHandleRegister = () => {
 
       });
 
-      console.log("Response Status", res.ok)
-      if(!values.username){
-        console.log("name",values.username)
+      if (!values.username) {
         setIsLoggedIn(true)
-      }else{
+      } else {
         setIsLoggedIn(false)
       }
 
@@ -45,7 +42,6 @@ export const useHandleRegister = () => {
       if (res.ok) {
         setIsLoggedIn(true)
         router.push("/home")
-        console.log("check", isLoggedIn)
       }
       else {
         console.log("Cannot register user");
@@ -59,9 +55,8 @@ export const useHandleRegister = () => {
         console.log("An unknown error occurred");
       }
     }
-    console.log("login state 2", isLoggedIn)
 
   }
 
-  return { onSubmit, isLoggedIn }
+  return { onSubmit }
 }

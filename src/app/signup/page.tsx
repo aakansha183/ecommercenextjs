@@ -11,25 +11,25 @@ import Grid from '@mui/material/Grid2';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import LoginTextField from "@/components/CommonTextInputField";
+import LoginTextField from "@/CommonComponents/CommonTextInputField";
 import { useRouter } from "next/navigation";
 import withAuth from "@/CommonComponents/withAuth";
 
 const Register: React.FC = () => {
-  const router =  useRouter();
-  const [registrationError, setRegistrationError] = useState<string>(""); 
-  const { onSubmit } = useHandleRegister(); 
+  const router = useRouter();
+  const [registrationError, setRegistrationError] = useState<string>("");
+  const { onSubmit } = useHandleRegister();
 
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
-    resolver: yupResolver(validationSchemaRegister), 
+    resolver: yupResolver(validationSchemaRegister),
   });
 
   const handleFormSubmit: SubmitHandler<FormData> = async (values) => {
-    const error = await onSubmit(values); 
+    const error = await onSubmit(values);
     if (error && typeof error === 'string') {
       setRegistrationError(error);
       setRegistrationError("An unknown error occurred.");
@@ -39,11 +39,11 @@ const Register: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-       <MainContainer>
-       <Title title={Translations.SHOP_CO} />
+      <MainContainer>
+        <Title title={Translations.SHOP_CO} />
         <form onSubmit={handleSubmit(handleFormSubmit)} style={{ width: "100%" }}>
           <Grid container spacing={2}>
-            <Grid size ={{ xs:12}}>
+            <Grid size={{ xs: 12 }}>
               <LoginTextField
                 id="username"
                 label="Username"
@@ -54,7 +54,7 @@ const Register: React.FC = () => {
               />
             </Grid>
 
-            <Grid size ={{ xs:12}}>
+            <Grid size={{ xs: 12 }}>
               <LoginTextField
                 id="password"
                 label="Password"
@@ -66,7 +66,7 @@ const Register: React.FC = () => {
               />
             </Grid>
 
-            <Grid size ={{ xs:12}}>
+            <Grid size={{ xs: 12 }}>
               <LoginTextField
                 id="email"
                 label="Email"
@@ -77,7 +77,7 @@ const Register: React.FC = () => {
               />
             </Grid>
 
-            <Grid size ={{ xs:12}}>
+            <Grid size={{ xs: 12 }}>
               <LoginTextField
                 id="firstName"
                 label="First Name"
@@ -88,7 +88,7 @@ const Register: React.FC = () => {
               />
             </Grid>
 
-            <Grid size ={{ xs:12}}>
+            <Grid size={{ xs: 12 }}>
               <LoginTextField
                 id="lastName"
                 label="Last Name"
@@ -99,11 +99,11 @@ const Register: React.FC = () => {
               />
             </Grid>
 
-            <Grid size ={{ xs:12}}>
-            <SubmitButton isSubmitting={isSubmitting} label={Translations.Register} />
+            <Grid size={{ xs: 12 }}>
+              <SubmitButton isSubmitting={isSubmitting} label={Translations.Register} />
 
-            
-            
+
+
             </Grid>
           </Grid>
         </form>
@@ -111,7 +111,7 @@ const Register: React.FC = () => {
         {registrationError && <ErrorMessage error={registrationError} />}
 
         <Grid container justifyContent="center" sx={{ mt: 2 }}>
-          <Grid size = {{xs:'auto'}}>
+          <Grid size={{ xs: 'auto' }}>
             <Typography variant="body2">
               {Translations.Alreadyregistered}{" "}
               <Link
@@ -120,7 +120,7 @@ const Register: React.FC = () => {
                   textDecoration: "underline",
                   cursor: "pointer",
                 }}
-                onClick={()=>
+                onClick={() =>
                   router.push('/login')
                 }
               >

@@ -23,7 +23,7 @@ const MyButtons: React.FC<{ onSelectSize: (size: string) => void }> = ({ onSelec
 
   const handleClick = (buttonName: string) => {
     setClickedButton(buttonName);
-    onSelectSize(buttonName); 
+    onSelectSize(buttonName);
   };
 
 

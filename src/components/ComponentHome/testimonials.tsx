@@ -24,18 +24,18 @@ import axios from "axios";
 
 const Testimonials: React.FC = () => {
 
-  const [testimonials,setTestimonials] = useState<TestimonialsIf[]>([]);
-  useEffect(()=>{
-    const fetchtestimonials = async () =>{
-      try{
+  const [testimonials, setTestimonials] = useState<TestimonialsIf[]>([]);
+  useEffect(() => {
+    const fetchtestimonials = async () => {
+      try {
         const response = await axios.get('/api/testimonials')
         setTestimonials(response.data);
-      }catch(error){
+      } catch (error) {
         console.error("Error fetching testimonials", error);
       }
     };
-    fetchtestimonials();    
-  },[]);
+    fetchtestimonials();
+  }, []);
 
 
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -56,7 +56,7 @@ const Testimonials: React.FC = () => {
     <Box sx={testimonialsContainer}>
       <Box sx={headerContainer}>
         <Typography variant="h4" component="h2" sx={headerText}>
-         {Translations.OURHAPPYCUSTOMERS}
+          {Translations.OURHAPPYCUSTOMERS}
         </Typography>
         <Box sx={iconButtonContainer}>
           <IconButton onClick={scrollLeft} sx={iconButton}>

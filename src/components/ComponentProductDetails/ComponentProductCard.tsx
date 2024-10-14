@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Grid from "@mui/material/Grid2";
-
 import {
   suggestedProductsContainer,
   titleStyles,
@@ -26,23 +25,23 @@ import { Product } from '@/Utils/Interfaces/InterfaceProduct';
 
 const SuggestedProducts: React.FC = () => {
   const router = useRouter()
-  const [products,setProducts]  = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>([])
   const renderStars = (rating: number) => (
-    
+
     <Rating value={rating} precision={0.5} readOnly sx={{ color: theme.colors.yellow }} />
   );
-useEffect(()=>{
-  const fetchProducts =  async ()=>{
-    try{
-      const response = await axios.get('/api/products/productsinfo')
-      setProducts(response.data.slice(0,4))
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('/api/products/productsinfo')
+        setProducts(response.data.slice(0, 4))
+      }
+      catch (error) {
+        console.log("Error Fetching data")
+      }
     }
-    catch(error){
-console.log("Error Fetching data")
-    }
-  }
-  fetchProducts();
-},[])
+    fetchProducts();
+  }, [])
 
 
   return (
@@ -52,12 +51,12 @@ console.log("Error Fetching data")
       </Typography>
       <Grid container spacing={7} justifyContent="center">
         {products.map((product) => (
-          <Grid size = {{ xs:12, sm:6 ,md:3}} key={product.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
             <Box sx={productCardStyles}>
               <Box
                 component="img"
                 onClick={() => {
-                router.push(`/productdetails?id=${product.id}`)
+                  router.push(`/productdetails?id=${product.id}`)
                 }}
                 src={product.image}
                 alt={product.name}
@@ -93,7 +92,7 @@ console.log("Error Fetching data")
       </Grid>
       <Button
         variant="outlined"
-        onClick={()=> router.push('/category')}
+        onClick={() => router.push('/category')}
         sx={viewAllButtonStyles}
       >
         <Typography sx={viewAllTranslationstyles}>{Translations.ViewAll}</Typography>

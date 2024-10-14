@@ -19,8 +19,8 @@ import Grid from "@mui/material/Grid2";
 import axios from "axios";
 import { Translations } from "@/Utils/Translation/Translation";
 import { Product } from "@/Utils/Interfaces/InterfaceProduct";
-import { useCategoryNavigate } from "@/routes/navigate";
 import { useRouter } from "next/navigation";
+import { useCategoryNavigate } from "@/routes/navigate";
 
 
 const TopSelling: React.FC = () => {
@@ -64,11 +64,11 @@ const TopSelling: React.FC = () => {
                     <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
                         <Box sx={cardContainerStyle}>
                             <img
-                            onClick ={()=>router.push(`/productdetails?id=${product.id}`)}
+                                onClick={() => router.push(`/productdetails?id=${product.id}`)}
                                 src={product.image}
                                 alt={product.name}
                                 style={imageStyle}
-                                
+
                             />
                             <Typography variant="subtitle1" sx={typographyStyles.productTitle}>
                                 {product.name}
@@ -98,7 +98,7 @@ const TopSelling: React.FC = () => {
                     </Grid>
                 ))}
             </Grid>
-            <Button variant="outlined" sx={buttonStyle}  onClick={() => useCategoryNavigate()}>
+            <Button variant="outlined" sx={buttonStyle} onClick={() => useCategoryNavigate()}>
                 <Typography sx={typographyStyles.buttonText}>{Translations.ViewAll}</Typography>
             </Button>
         </Box>

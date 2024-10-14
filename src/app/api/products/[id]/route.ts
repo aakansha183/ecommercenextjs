@@ -72,15 +72,15 @@ const products: Product[] = [
 
   },
 ];
-interface Params{
-  params:{
-    id:string;
+interface Params {
+  params: {
+    id: string;
   }
 }
 
 export async function GET(
   request: Request,
-  {params}:Params
+  { params }: Params
 ) {
   const { id } = params;
   const product = products.find((p) => p.id === Number(id));

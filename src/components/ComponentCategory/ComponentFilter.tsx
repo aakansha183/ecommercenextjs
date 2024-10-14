@@ -154,7 +154,7 @@ const FilterComponent: React.FC = () => {
               sx={styles.accordionSummary}
             >
               <Typography sx={styles.accordionHeading}>
-               {Translations.Price}
+                {Translations.Price}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -237,7 +237,7 @@ const FilterComponent: React.FC = () => {
         sx={{ mt: 2, flexDirection: { xs: "column", sm: "row" } }}
       >
         <Button variant="contained" sx={styles.button}>
-       {Translations.apply}
+          {Translations.apply}
         </Button>
       </Stack>
     </Box>

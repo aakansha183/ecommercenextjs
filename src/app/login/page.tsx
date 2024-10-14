@@ -11,7 +11,7 @@ import { LoginFormValues } from "../../Utils/Interfaces/LoginInterfaces";
 import { validationSchemaLogin } from "../../validationschema/LoginValidation";
 import { Translations } from "../../Utils/Translation/Translation";
 import { ErrorMessage, MainContainer, SubmitButton, Title } from "../../CommonComponents/LoginCommonComponent";
-import LoginTextField from "@/components/CommonTextInputField";
+import LoginTextField from "@/CommonComponents/CommonTextInputField";
 import { useLoginHandler } from "@/components/LoginHandlers";
 import { useRouter } from "next/navigation";
 import withAuth from "@/CommonComponents/withAuth";
@@ -19,7 +19,7 @@ import withAuth from "@/CommonComponents/withAuth";
 const Login: React.FC = () => {
   const [error, setError] = useState<string>("");
   const { onSubmit } = useLoginHandler();
-const router =  useRouter();
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -31,8 +31,8 @@ const router =  useRouter();
   return (
     <Container maxWidth="sm">
       <MainContainer>
-      
-      <Title title={Translations.SHOP_CO} />
+
+        <Title title={Translations.SHOP_CO} />
 
 
         <form onSubmit={handleSubmit((values) => onSubmit(values, setError))}>
@@ -59,8 +59,8 @@ const router =  useRouter();
             </Grid>
 
             <Grid size={{ xs: 12 }}>
-            <SubmitButton isSubmitting={isSubmitting} label={Translations.Login}
-             />
+              <SubmitButton isSubmitting={isSubmitting} label={Translations.Login}
+              />
 
             </Grid>
           </Grid>
@@ -71,9 +71,9 @@ const router =  useRouter();
         <Grid container justifyContent="center">
           <Grid size={{ xs: 'auto' }}>
             {Translations.LoginSubHead}{" "}
-            <Link component="button" variant="body2" onClick={()=>  router.push('/signup') } >
+            <Link component="button" variant="body2" onClick={() => router.push('/signup')} >
               {Translations.Register}
-              
+
             </Link>
           </Grid>
         </Grid>

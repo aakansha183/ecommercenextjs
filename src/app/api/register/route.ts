@@ -7,13 +7,13 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const { username, password, email, firstName, lastName } = body;
-        const hasedPassword =  await bcrypt.hash(password,10)
+        const hasedPassword = await bcrypt.hash(password, 10)
 
         console.log("Attempting to connect to MongoDB...");
         await connectToMongoDB();
         console.log("Connected to MongoDB!");
-        
-        const newUser = await User.create({ username, password:hasedPassword, email, firstName, lastName });
+
+        const newUser = await User.create({ username, password: hasedPassword, email, firstName, lastName });
         console.log("User created:", newUser);
 
         return NextResponse.json({ message: 'User is registered now' }, { status: 201 });

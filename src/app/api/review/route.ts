@@ -46,14 +46,14 @@ export const initialReviews: Review[] = [
   },
 ];
 export const defaultNewReview: Review = {
-    id: 0,
-    name: '',
-    rating: 0,
-    date: '',
-    review: '',
-  };
+  id: 0,
+  name: '',
+  rating: 0,
+  date: '',
+  review: '',
+};
 
-export async function GET(){
-    return NextResponse.json(initialReviews);
-    
+export async function GET() {
+  return NextResponse.json(initialReviews);
+
 };

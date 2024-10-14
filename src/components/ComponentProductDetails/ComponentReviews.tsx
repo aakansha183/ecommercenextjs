@@ -54,7 +54,7 @@ const ReviewsList: React.FC<ReviewsListProps> = ({ reviews }) => {
     <Box sx={reviewsListContainerStyles}>
       <Grid container spacing={{ xs: 3, sm: 3, md: 2 }} justifyContent="center">
         {sortedReviews.slice(0, visibleCount).map((review) => (
-          <Grid  key={review.id} size = {{xs:12, sm:12, md:6}}>
+          <Grid key={review.id} size={{ xs: 12, sm: 12, md: 6 }}>
             <ReviewCard {...review} />
           </Grid>
         ))}

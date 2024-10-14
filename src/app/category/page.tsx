@@ -20,16 +20,16 @@ const CategoryDetails: React.FC = () => {
       <FilterProvider>
         <Box sx={styles.filterWrapper}>
           <Grid container spacing={2}>
-            <Grid size = {{ xs:12, md:3}}>
-              <FilterComponent /> 
+            <Grid size={{ xs: 12, md: 3 }}>
+              <FilterComponent />
             </Grid>
-            <Grid size = {{ xs:12, md:9}}>
+            <Grid size={{ xs: 12, md: 9 }}>
               <ProductGrid />
             </Grid>
           </Grid>
         </Box>
       </FilterProvider>
-      
+
       <Footer />
     </Box>
   );
