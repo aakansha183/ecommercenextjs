@@ -2,20 +2,20 @@
 import React, { useState } from "react";
 import { Box, Container, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import useAuth from "../Hooks/UseAuth";
 import { topHeaderContainer, containerStyle, typographyStyle, iconButtonStyle, closeIconStyle } from "../CommonComponents/StyleCommonComponents/StyleTopHeder";
 import { Translations } from "../Utils/Translation/Translation";
 import Link from "next/link";
+import { useAppContext } from "@/context";
 
 const TopHeader: React.FC = () => {
-  const { currentUser } = useAuth();
+  const { isLoggedIn } = useAppContext();
   const [isVisible, setIsVisible] = useState(true);
 
   const handleClose = () => {
     setIsVisible(false);
   };
 
-  if (currentUser || !isVisible) return null;
+  if (isLoggedIn || !isVisible) return null;
 
   return (
     <Box sx={topHeaderContainer}>
