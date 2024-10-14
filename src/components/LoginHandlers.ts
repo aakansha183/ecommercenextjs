@@ -7,8 +7,6 @@ import { useAppContext } from "@/context";
 export const useLoginHandler = () => {
   const router = useRouter();
   const { setIsLoggedIn } = useAppContext();
-
-
   const onSubmit = async (values: LoginFormValues, setError: (error: string) => void) => {
     try {
       const success = await signIn("credentials", {
@@ -17,8 +15,7 @@ export const useLoginHandler = () => {
         redirect: false,
 
       });
-      console.log("sucees status", success)
-      if (success) {
+      if (success?.ok === true) {
         router.push("/home")
         setIsLoggedIn(true)
         toast.success("Successfully Logged In", { theme: "dark" });

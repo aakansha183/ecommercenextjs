@@ -4,6 +4,7 @@ import { connectToMongoDB } from "../../../../../lib/mongodb";
 import User from "../../../../../models/user";
 import NextAuth from "next-auth/next";
 import credentials from "next-auth/providers/credentials";
+import { Alert } from "@mui/material";
 
 
 export const authOptions: NextAuthOptions = {
@@ -23,14 +24,18 @@ export const authOptions: NextAuthOptions = {
           username: credentials?.username,
         }).select("+password");
 
-        if (!user) throw new Error("Wrong Email");
+        if (!user) {
+          
+        };
 
         const passwordMatch = await bcrypt.compare(
           credentials!.password,
           user.password
         );
 
-        if (!passwordMatch) throw new Error("Wrong Password");
+        if (!passwordMatch) {
+          alert("Enter correct password")
+        };
         return user;
       }
 
