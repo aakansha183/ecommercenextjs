@@ -1,10 +1,11 @@
 import { SubmitHandler } from "react-hook-form";
 import { FormData } from "../Utils/Interfaces/SignupInterfaces";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useAppContext } from "@/context";
 
 export const useHandleRegister = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const { isLoggedIn, setIsLoggedIn } = useAppContext();
   console.log("login state", isLoggedIn)
 
   const router = useRouter();
@@ -29,18 +30,24 @@ export const useHandleRegister = () => {
           firstName: values.firstName,
           lastName: values.lastName
         })
-        
+
       });
-        
+
       console.log("Response Status", res.ok)
-      
-      if (res.ok) {
-        router.push("/home")
+      if(!values.username){
+        console.log("name",values.username)
         setIsLoggedIn(true)
+      }else{
+        setIsLoggedIn(false)
       }
 
-      else {
 
+      if (res.ok) {
+        setIsLoggedIn(true)
+        router.push("/home")
+        console.log("check", isLoggedIn)
+      }
+      else {
         console.log("Cannot register user");
       }
       console.log(res.ok, 'status')

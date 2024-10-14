@@ -5,6 +5,7 @@ import { Providers } from "./provider";
 import { Ruda } from "next/font/google";
 import { connectToMongoDB } from "../../lib/mongodb";
 import { SesProvider } from "../../sessionProvider";
+import { AppContextWrapper } from "@/context";
 
 const geistSans = localFont({
   src: "../fonts/GeistMonoVF.woff",
@@ -17,9 +18,9 @@ const geistMono = localFont({
   weight: "100 900",
 });
 const ruda = Ruda({
-  subsets:['latin'],
-  variable:"--font-ruda",
-  weight:"400",
+  subsets: ['latin'],
+  variable: "--font-ruda",
+  weight: "400",
 })
 
 export const metadata: Metadata = {
@@ -37,7 +38,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${ruda.variable}`}>
         <SesProvider>
-        <Providers>{children}</Providers>
+          < AppContextWrapper>
+            <Providers>{children}</Providers>
+          </AppContextWrapper>
         </SesProvider>
       </body>
     </html>

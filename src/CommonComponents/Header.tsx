@@ -21,10 +21,11 @@ import { Translations } from '../Utils/Translation/Translation';
 import SearchIcon from '../../public/assests/ImagesData/SearchIcon';
 import CartIcon from '../../public/assests/ImagesData/CartIcon';
 import AccountIcon from '../../public/assests/ImagesData/AccountIcon';
-import useAuth from '@/Hooks/UseAuth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useHandleRegister } from '@/components/SignupHandlers';
+import { useAppContext } from '@/context';
+import { signOut } from 'next-auth/react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -67,8 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Header: React.FC = () => {
 const router  = useRouter();
-const{isLoggedIn} = useHandleRegister();
-  const { logout } = useAuth();
+const{isLoggedIn,setIsLoggedIn} = useAppContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
@@ -88,7 +88,13 @@ const{isLoggedIn} = useHandleRegister();
 
   const handleLogout = async () => {
     if (isLoggedIn) {
-      await logout();
+      signOut({
+        redirect:false
+        
+      }).then(()=>{
+        setIsLoggedIn(false)
+        router.push("/")
+      })
       toast.success("Successfully logged out", { theme: 'dark' });
       handleMenuClose();
     } else {
