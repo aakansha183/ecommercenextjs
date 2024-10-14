@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./provider";
-
+import { Ruda } from "next/font/google";
+import { connectToMongoDB } from "../../lib/mongodb";
+import { SesProvider } from "../../sessionProvider";
 
 const geistSans = localFont({
   src: "../fonts/GeistMonoVF.woff",
@@ -14,6 +16,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const ruda = Ruda({
+  subsets:['latin'],
+  variable:"--font-ruda",
+  weight:"400",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +32,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToMongoDB();
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${ruda.variable}`}>
+        <SesProvider>
         <Providers>{children}</Providers>
+        </SesProvider>
       </body>
     </html>
   );

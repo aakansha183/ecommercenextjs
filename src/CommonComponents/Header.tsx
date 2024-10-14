@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import { styled, useTheme } from '@mui/material/styles';
-import { Divider, useMediaQuery, Badge } from '@mui/material';
+import {  useMediaQuery, Badge } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -24,6 +24,7 @@ import AccountIcon from '../../public/assests/ImagesData/AccountIcon';
 import useAuth from '@/Hooks/UseAuth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useHandleRegister } from '@/components/SignupHandlers';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -66,7 +67,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Header: React.FC = () => {
 const router  = useRouter();
-  const { logout, isLoggedIn } = useAuth();
+const{isLoggedIn} = useHandleRegister();
+  const { logout } = useAuth();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);

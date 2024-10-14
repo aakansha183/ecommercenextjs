@@ -14,6 +14,7 @@ import { ErrorMessage, MainContainer, SubmitButton, Title } from "../../CommonCo
 import LoginTextField from "@/components/CommonTextInputField";
 import { useLoginHandler } from "@/components/LoginHandlers";
 import { useRouter } from "next/navigation";
+import withAuth from "@/CommonComponents/withAuth";
 
 const Login: React.FC = () => {
   const [error, setError] = useState<string>("");
@@ -81,4 +82,4 @@ const router =  useRouter();
   );
 };
 
-export default Login;
+export default withAuth(Login);

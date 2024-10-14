@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import LoginTextField from "@/components/CommonTextInputField";
 import { useRouter } from "next/navigation";
+import withAuth from "@/CommonComponents/withAuth";
 
 const Register: React.FC = () => {
   const router =  useRouter();
@@ -133,4 +134,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default withAuth(Register);

@@ -1,5 +1,5 @@
 "use client"
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, useMediaQuery } from "@mui/material";
 import React from "react";
 import TopHeader from "../../CommonComponents/TopHeader";
 import Header from "../../CommonComponents/Header";
@@ -12,6 +12,7 @@ import {
   footerBoxStyles,
 } from "../../Styles/StyleCart/StyleCartPage";
 import CartComponent from "@/components/ComponentCart/CartComponent";
+
 
 const CartPage: React.FC = () => {
 

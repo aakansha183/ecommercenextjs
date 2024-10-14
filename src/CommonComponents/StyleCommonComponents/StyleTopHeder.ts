@@ -1,3 +1,4 @@
+import { inter } from '@/fonts/fontsDef';
 import { SxProps, Theme } from '@mui/material';
 
 export const topHeaderContainer: SxProps<Theme> = {
@@ -24,7 +25,7 @@ export const containerStyle: SxProps<Theme> = {
 
 export const typographyStyle: SxProps<Theme> = {
   fontSize: { xs: "12px", sm: "14px", md: "16px" },
-  fontFamily: "sans-serif",
+  fontFamily: 'var(--font-ruda)',
   textAlign: "center",
 };
 
